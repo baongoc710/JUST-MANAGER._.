@@ -1,4 +1,4 @@
-#include <iostream> 
+ #include <iostream> 
 #include <string>
 
 using namespace std;
@@ -28,6 +28,16 @@ int main(){
     getline (cin, end_date);
     cout << "Expected score: ";
     cin >> expected_score;
+
+    cout <<"\n____Course information____\n";
+    cout <<"Course name: " << course_name <<endl;
+    cout <<"Course code: " << course_code <<endl;
+    cout <<"Platform: " << platform << endl;
+    cout <<"Instructor: " << instructor << endl;
+    cout <<"Status: " << status << endl;
+    cout <<"Start date: " <<start_date << endl;
+    cout <<"End date: " <<end_date << endl;
+    cout <<"Expected score: " <<expected_score << endl;
 //cin: hỏi người dùng
 //getline/cin: nhận câu trl
 
