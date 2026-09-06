@@ -4,12 +4,13 @@
 
 using namespace std;
 int main(){
-    int choice;
+    int choice = 1;
 
     string view_course;
     string edit_course;
     string add_course;
     string archive_course;
+    string exit;
 
     string course_name;
     string course_code;
@@ -20,10 +21,13 @@ int main(){
     string end_date;
     double expected_score;
 
+    while (choice !=5){
+
     cout <<"1) View course" << endl;
     cout <<"2) Edit course" << endl;
     cout <<"3) Add course" << endl;
     cout <<"4) Archive course" << endl;
+    cout <<"5) Exit" << endl;
 
     cout << "Enter your choice: ";
     cin >> choice;
@@ -69,14 +73,19 @@ int main(){
     cout <<"Start date: " <<start_date << endl;
     cout <<"End date: " <<end_date << endl;
     cout <<"Expected score: " <<expected_score << endl;
-   
    }
-   else if (choice == 4){
-    cout << "Archive course";
-   }
-    
-//getline cần 1 biến kiểu string nên expected score phải dùng cin
 
+      else if (choice == 4){
+    cout <<"Archive course";
+}
+      else if (choice == 5){
+        cout <<"Exit";
+}
+      else {
+        cout <<"Invalid choice!!";
+}
+ }
+//getline cần 1 biến kiểu string nên expected score phải dùng cin
 //cin: hỏi người dùng
 //getline/cin: nhận câu trl
 
