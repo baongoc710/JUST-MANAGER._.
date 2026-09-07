@@ -1,17 +1,10 @@
 #include <iostream> 
 #include <string>
 #include <limits>
+#include <vector>
 
 using namespace std;
-int main(){
-    int choice = 1;
-
-    string view_course;
-    string edit_course;
-    string add_course;
-    string archive_course;
-    string exit;
-
+struct Course {
     string course_name;
     string course_code;
     string platform;
@@ -20,6 +13,10 @@ int main(){
     string start_date;
     string end_date;
     double expected_score;
+};
+int main(){
+  vector <Course> courses;
+    int choice = 1;
 
     while (choice !=5){
 
@@ -30,9 +27,16 @@ int main(){
     cout <<"5) Exit" << endl;
 
     cout << "Enter your choice: ";
-    cin >> choice;
+    //check xem choice có là số hay kh
+    if (!(cin >> choice)){
+      cout << "invalid" << endl;
 
-   if (choice == 1){
+      cin.clear(); //bị thì sẽ xóa bắt nhập lại chứ kh cần phải run lại
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      continue;
+
+    }
+    if (choice ==1){
     cout << "View course";
 }
 
@@ -41,38 +45,49 @@ int main(){
 }
 
    else if (choice == 3){
-    cout <<"Add course: ";
+    Course course;
+    cout <<"Add course ";
 
     cin.ignore (numeric_limits <streamsize> :: max(), '\n');
 
     cout <<"\n____Course information____\n";
 
     cout << "Course name: ";
-    getline (cin, course_name);
+    getline (cin, course.course_name);
     cout << "Course code: ";
-    getline (cin, course_code);
+    getline (cin, course.course_code);
     cout << "Platform: ";
-    getline (cin, platform);
+    getline (cin, course.platform);
     cout << "Instructor: ";
-    getline (cin, instructor);
+    getline (cin, course.instructor);
     cout << "Status: ";
-    getline (cin, status);
+    getline (cin, course.status);
     cout << "Start date: ";
-    getline (cin, start_date);
+    getline (cin, course.start_date);
     cout << "End date: ";
-    getline (cin, end_date);
+    getline (cin, course.end_date);
     cout << "Expected score: ";
-    cin >> expected_score;
+cin >> course.expected_score;
 
+while (cin.fail()) {
+    cout << "Invalid score, pls enter a number: ";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin >> course.expected_score;
+}
+courses.push_back(course);
+cout << "\nCourse saved successfully!" << endl;
+cout << "Total course: " << courses.size() << endl;
+  
     cout <<"\n____Course information____\n";
-    cout <<"Course name: " << course_name <<endl;
-    cout <<"Course code: " << course_code <<endl;
-    cout <<"Platform: " << platform << endl;
-    cout <<"Instructor: " << instructor << endl;
-    cout <<"Status: " << status << endl;
-    cout <<"Start date: " <<start_date << endl;
-    cout <<"End date: " <<end_date << endl;
-    cout <<"Expected score: " <<expected_score << endl;
+    cout <<"Course name: " << course.course_name <<endl;
+    cout <<"Course code: " << course.course_code <<endl;
+    cout <<"Platform: " << course.platform << endl;
+    cout <<"Instructor: " << course.instructor << endl;
+    cout <<"Status: " << course.status << endl;
+    cout <<"Start date: " <<course.start_date << endl;
+    cout <<"End date: " <<course.end_date << endl;
+    cout <<"Expected score: " <<course.expected_score << endl;
    }
 
       else if (choice == 4){
