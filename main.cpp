@@ -36,9 +36,26 @@ int main(){
       continue;
 
     }
-    if (choice ==1){
-    cout << "View course";
-}
+    if (choice == 1){
+    cout << "View course" << endl;
+    cout << " | courses size = " << courses.size() << endl;
+
+    if (courses.size() == 0){
+      cout << "no course available" << endl;}
+    else if (courses.size()){
+      for(int i = 0; i < courses.size(); i++){
+      cout << courses[i].course_name << endl;
+      cout << courses[i].course_code << endl;
+      cout << courses[i].platform << endl;
+      cout << courses[i].instructor << endl;
+      cout << courses[i].status << endl;
+      cout << courses[i].start_date << endl;
+      cout << courses[i].end_date << endl;
+    } 
+    }
+    }
+   
+    //for chỉ mới qly biến đếm và đi qua từng vị trí trg vector thôi
 
    else if (choice == 2){
     cout << "Edit course";
@@ -68,7 +85,7 @@ int main(){
     getline (cin, course.end_date);
     cout << "Expected score: ";
 cin >> course.expected_score;
-
+   
 while (cin.fail()) {
     cout << "Invalid score, pls enter a number: ";
     cin.clear();
@@ -99,10 +116,11 @@ cout << "Total course: " << courses.size() << endl;
       else {
         cout <<"Invalid choice!!";
 }
- }
+    }
+
 //getline cần 1 biến kiểu string nên expected score phải dùng cin
 //cin: hỏi người dùng
 //getline/cin: nhận câu trl
 
-return 0;
-}
+return 0; }
+  
