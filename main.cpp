@@ -44,6 +44,14 @@ int main(){
       cout << "no course available" << endl;}
     else if (courses.size()){
       for(int i = 0; i < courses.size(); i++){
+        cout << i + 1 << ". " << courses[i].course_name <<endl;
+      }
+      int course_choice;
+      cout << "\nenter course number: ";
+      cin >> course_choice;
+
+      int i = course_choice - 1;
+
       cout << courses[i].course_name << endl;
       cout << courses[i].course_code << endl;
       cout << courses[i].platform << endl;
@@ -53,14 +61,14 @@ int main(){
       cout << courses[i].end_date << endl;
     } 
     }
-    }
+  
    
     //for chỉ mới qly biến đếm và đi qua từng vị trí trg vector thôi
 
    else if (choice == 2){
     cout << "Edit course";
 }
-
+    
    else if (choice == 3){
     Course course;
     cout <<"Add course ";
@@ -117,6 +125,7 @@ cout << "Total course: " << courses.size() << endl;
         cout <<"Invalid choice!!";
 }
     }
+  
 
 //getline cần 1 biến kiểu string nên expected score phải dùng cin
 //cin: hỏi người dùng
