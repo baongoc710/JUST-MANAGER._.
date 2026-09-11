@@ -15,7 +15,7 @@ struct Course {
     double expected_score;
 };
 int main(){
-  vector <Course> courses;
+  vector <Course> courses; //vector để lưu nhiều course
     int choice = 1;
 
     while (choice !=5){
@@ -29,7 +29,7 @@ int main(){
     cout << "Enter your choice: ";
     //check xem choice có là số hay kh
     if (!(cin >> choice)){
-      cout << "invalid" << endl;
+      cout << "invalid choice" << endl;
 
       cin.clear(); //bị thì sẽ xóa bắt nhập lại chứ kh cần phải run lại
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -42,7 +42,7 @@ int main(){
 
     if (courses.size() == 0){
       cout << "no course available" << endl;}
-    else if (courses.size()){
+    else if (courses.size() > 0){
       for(int i = 0; i < courses.size(); i++){
         cout << i + 1 << ". " << courses[i].course_name <<endl;
       }
@@ -59,16 +59,148 @@ int main(){
       cout << courses[i].status << endl;
       cout << courses[i].start_date << endl;
       cout << courses[i].end_date << endl;
+      cout << courses[i].expected_score << endl;
     } 
-    }
-  
+  }
    
     //for chỉ mới qly biến đếm và đi qua từng vị trí trg vector thôi
 
    else if (choice == 2){
-    cout << "Edit course";
+    cout << "Edit course" << endl;
+    if (courses.empty()){
+      cout << "no course to edit" << endl;
+    }
+
+      else{
+        for(int j = 0; j < courses.size(); j++){
+          cout << j + 1 << ". " 
+               << courses[j].course_name 
+               << endl;
+        }
+        
+
+        int course_choice;
+
+        while (true) {
+      cout << "\nchoose a course to edit: ";
+      if (!(cin >> course_choice)){
+          cout << "invalid course choiceeee" << endl;
+          cin.clear();
+          cin.ignore(
+            numeric_limits<streamsize>::max(), '\n');
+            continue;
+       }
+
+      if (course_choice >=1 && course_choice <= courses.size()){
+        break;
+      }
+      cout << "invalid course choiceeee" << endl;
+        }
+      
+      int i = course_choice -1;
+      
+      cout << "1) Course name: " << courses[i].course_name << endl;
+      cout << "2) Course code: " << courses[i].course_code << endl;
+      cout << "3) Platform: " << courses[i].platform << endl;
+      cout << "4) Instructor: " << courses[i].instructor << endl;
+      cout << "5) Status: " << courses[i].status << endl;
+      cout << "6) Start date: " << courses[i].start_date << endl;
+      cout << "7) End date: " << courses[i].end_date << endl;
+      cout << "8) Expected score: " << courses[i].expected_score << endl;
+      
+      while (true){
+    int field_choice;
+
+      while (true){
+      cout << "choose any field (just 1-8): " << endl;
+
+      if(!(cin >> field_choice)){
+        cout << "Invalid field choice" << endl;
+        cin.clear();
+        cin.ignore(
+          numeric_limits<streamsize>::max(), '\n');
+          continue;
+        }
+
+    if (field_choice >=1 && field_choice <= 8){
+      break;
+    }
+
+    cout << "Invalid field choice" << endl;
+  }
+
+  cin.ignore(
+    numeric_limits<streamsize>::max(), '\n');
+  
+
+    if (field_choice == 1){
+      cout << "new course name: ";
+      getline(cin, courses[i].course_name);
+    }
+
+    else if (field_choice == 2){
+      cout << "new course code: ";
+      getline (cin, courses[i].course_code);
+    }
+
+    else if (field_choice == 3){
+      cout << "update platform: ";
+      getline (cin, courses[i].platform);
+    }
+
+    else if (field_choice == 4){
+      cout << "new instructor: ";
+      getline (cin, courses[i].instructor);
+    }
+
+    else if (field_choice == 5){
+      cout << "update status: ";
+      getline (cin, courses[i].status);
+    }
+
+    else if (field_choice == 6){
+      cout << "update start date: ";
+      getline (cin, courses[i].start_date);
+    }
+
+    else if (field_choice == 7){
+      cout << "update end date: ";
+      getline (cin, courses[i].end_date);
+    }
+
+    else if (field_choice ==8){
+      cout << "update expected score: ";
+       (cin, courses[i].expected_score);
+       
+      while (!(cin >> courses[i].expected_score)) {
+        cout << "invalid score" << "please enter a number: ";
+        cin.clear();
+        cin.ignore(
+          numeric_limits<streamsize>::max(), '\n');
+      }
+    }
+      
+        
+    cout << "oki bae, field updated!!" << endl;
+  
+
+    string edit_field;
+    cout << "edit more?? confirm yes or no: ";
+    cin >> edit_field;
+
+    if (edit_field == "no"){
+      break;
+    }
+    else if (edit_field =="yes"){
+      continue;
+    }
+    else{
+      cout << "invalid!!!!!!!!!" << endl;
+    }
+  
+      }
+      }
 }
-    
    else if (choice == 3){
     Course course;
     cout <<"Add course ";
@@ -131,5 +263,8 @@ cout << "Total course: " << courses.size() << endl;
 //cin: hỏi người dùng
 //getline/cin: nhận câu trl
 
-return 0; }
+return 0; 
+}
+
+
   
